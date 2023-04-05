@@ -56,7 +56,7 @@ namespace LAB.DatabaseQuartz.Api.Api.BackgoundServices
             return JobBuilder
                 .Create(type)
                 .WithIdentity(job.Name, job.Group.Name)
-                .UsingJobData("configId", job.Code)
+                .UsingJobData("Data", job.Data)
                 .Build();
         }
 
