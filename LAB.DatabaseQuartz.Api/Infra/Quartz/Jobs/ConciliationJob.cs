@@ -1,5 +1,6 @@
 ﻿using LAB.DatabaseQuartz.Api.Domain.Services.Contracts;
 using LAB.DatabaseQuartz.Api.Infra.Quartz.Jobs.Models;
+using LAB.DatabaseQuartz.Api.Infra.Quartz.Models;
 using Newtonsoft.Json;
 using Quartz;
 
@@ -16,7 +17,7 @@ namespace LAB.DatabaseQuartz.Api.Infra.Quartz.Jobs
 
         public Task Execute(IJobExecutionContext context)
         {
-            var data = context.JobDetail.JobDataMap.GetString("Data");
+            var data = context.JobDetail.JobDataMap.GetString(nameof(JobModel.Data));
 
             if (string.IsNullOrEmpty(data)) 
             {
@@ -25,7 +26,7 @@ namespace LAB.DatabaseQuartz.Api.Infra.Quartz.Jobs
 
             var model = JsonConvert.DeserializeObject<ConciliationModel>(data);
 
-            Console.WriteLine(data);
+            DomainService.Proccess(data);
 
             return Task.CompletedTask;
         }

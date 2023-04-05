@@ -2,6 +2,6 @@
 {
     public interface IDomainService
     {
-        void Print(string value);
+        void Proccess(string value);
     }
 }

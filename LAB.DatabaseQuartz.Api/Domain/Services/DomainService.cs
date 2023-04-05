@@ -4,7 +4,7 @@ namespace LAB.DatabaseQuartz.Api.Domain.Services
 {
     public class DomainService : IDomainService
     {
-        public void Print(string value)
+        public void Proccess(string value)
         {
         }
     }
